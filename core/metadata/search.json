@@ -1,0 +1,5 @@
+{
+	"Command": "--search",
+	"Args": "<keyword>",
+	"Description": "search for specific tool"
+}

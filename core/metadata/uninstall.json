@@ -1,0 +1,5 @@
+{
+	"Command": "--uninstall",
+	"Args": "<tool>",
+	"Description": "remove an installed tool"
+}
