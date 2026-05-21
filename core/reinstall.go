@@ -16,6 +16,14 @@ func Reinstall(pkg string) {
         return
     }
 
+    if !CheckPackage(pkg) {
+        fmt.Printf(
+            "%s[!] %sPackage: %s%s %sis not installed!\n",
+            color.R, color.N, color.GG, pkg, color.N,
+        )
+        return
+    }
+
     fmt.Printf(
         "%s[*] %sReinstalling: %s%s%s\n",
         color.B, color.N, color.GG, pkg, color.N,
