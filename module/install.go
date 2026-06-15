@@ -1,13 +1,13 @@
 // https://github.com/Zeronetsec/Znskit
 
-package core
+package module
 
 import (
     "fmt"
     "os"
     "path/filepath"
-    "znskit/utils"
-    "znskit/utils/color"
+    "github.com/Zeronetsec/Znskit/utils"
+    "github.com/Zeronetsec/Znskit/utils/color"
 )
 
 func Install(pkg string) {
@@ -59,7 +59,7 @@ func Install(pkg string) {
     }
 
     fmt.Printf(
-        "%s[%s4%s/%s5%s] %sValidating package...\n",
+        "%s[%s4%s/%s6%s] %sValidating package...\n",
         color.DG, color.GG, color.DG, color.GG, color.DG, color.N,
     )
 

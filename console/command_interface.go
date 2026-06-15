@@ -3,10 +3,11 @@
 package console
 
 import (
+    "os"
     "fmt"
     "time"
-    "znskit/core"
-    "znskit/utils/invinput"
+    "github.com/Zeronetsec/Znskit/module"
+    "github.com/Zeronetsec/Znskit/utils/invinput"
 )
 
 type Command interface {
@@ -15,79 +16,79 @@ type Command interface {
 
 type Helper struct{}
 func (c Helper) Execute(args []string) {
-    core.Help()
+    module.Help()
 }
 
 type Version struct{}
 func (c Version) Execute(args []string) {
-    core.Version()
+    module.Version()
 }
 
 type UWU struct{}
 func (c UWU) Execute(args []string) {
-    fmt.Print("\033[?25l")
-    core.Uwu(5 * time.Second)
-    fmt.Print("\033[?25h")
+    fmt.Print("\x1b[?25l")
+    module.Uwu(5 * time.Second)
+    fmt.Print("\x1b[?25h")
 }
 
 type Install struct{}
 func (c Install) Execute(args []string) {
     if len(args) < 3 {
-        invinput.MissingArgs()
-        return
+        invinput.MissingArgument()
+        os.Exit(1)
     }
 
-    core.Install(args[2])
+    module.Install(args[2])
 }
 
 type Uninstall struct{}
 func (c Uninstall) Execute(args []string) {
     if len(args) < 3 {
-        invinput.MissingArgs()
-        return
+        invinput.MissingArgument()
+        os.Exit(1)
     }
 
-    core.Uninstall(args[2])
+    module.Uninstall(args[2])
 }
 
 type Search struct{}
 func (c Search) Execute(args []string) {
     if len(args) < 3 {
-        invinput.MissingArgs()
-        return
+        invinput.MissingArgument()
+        os.Exit(1)
     }
 
-    core.Search(args[2])
+    module.Search(args[2])
 }
 
 type Lister struct{}
 func (c Lister) Execute(args []string) {
-    core.List()
+    module.List()
 }
 
 type ListInstalled struct{}
 func (c ListInstalled) Execute(args []string) {
-    core.ListInstalled()
+    module.ListInstalled()
 }
 
 type Reinstall struct{}
 func (c Reinstall) Execute(args []string) {
     if len(args) < 3 {
-        invinput.MissingArgs()
-        return
+        invinput.MissingArgument()
+        os.Exit(1)
     }
 
-    core.Reinstall(args[2])
+    module.Reinstall(args[2])
 }
 
 type Info struct{}
 func (c Info) Execute(args []string) {
     if len(args) < 3 {
-        invinput.MissingArgs()
-        return
+        invinput.MissingArgument()
+        os.Exit(1)
     }
 
-    core.Info(args[2])
+    module.Info(args[2])
 }
 
 // Copyright (c) 2026 Zeronetsec

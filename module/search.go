@@ -1,12 +1,12 @@
 // https://github.com/Zeronetsec/Znskit
 
-package core
+package module
 
 import (
     "strings"
     "fmt"
     "encoding/json"
-    "znskit/utils/color"
+    "github.com/Zeronetsec/Znskit/utils/color"
 )
 
 func Search(query string) {

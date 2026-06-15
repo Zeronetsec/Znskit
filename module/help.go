@@ -1,15 +1,15 @@
 // https://github.com/Zeronetsec/Znskit
 
-package core
+package module
 
 import (
     "embed"
     "fmt"
     "encoding/json"
     "io/fs"
-    "znskit/utils"
-    "znskit/utils/color"
-    "znskit/utils/banner"
+    "github.com/Zeronetsec/Znskit/utils"
+    "github.com/Zeronetsec/Znskit/utils/color"
+    "github.com/Zeronetsec/Znskit/utils/banner"
 )
 
 //go:embed metadata/*
@@ -22,14 +22,13 @@ func Help() {
     utils.Birthday()
 
     fmt.Printf(
-        "%sUsage: %s%s %s<command> [<args>]%s\n",
+        "%sUsage: %s%s %s<option> [<args>]%s\n",
         color.N, color.GG, tname, color.CC, color.N,
     )
 
     fmt.Println()
-
     fmt.Printf(
-        "%sAvailable commands:\n",
+        "%sAvailable options:\n",
         color.N,
     )
 
@@ -60,8 +59,13 @@ func Help() {
         }
 
         fmt.Printf(
-            "    %s* %s%s%s%s %s- %s%s%s\n",
-            color.DG, color.GG, hp.Command, color.CC, args, color.DG, color.WW, hp.Description, color.N,
+            "    %s* %s%s%s%s%s\n",
+            color.DG, color.GG, hp.Command, color.CC, args, color.N,
+        )
+
+        fmt.Printf(
+            "    %s└── %s%s%s\n",
+            color.DG, color.WW, hp.Description, color.N,
         )
     }
 }

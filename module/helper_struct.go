@@ -1,6 +1,6 @@
 // https://github.com/Zeronetsec/Znskit
 
-package core
+package module
 
 type Helper struct {
     Command string `json:"Command"`

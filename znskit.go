@@ -5,7 +5,7 @@ package main
 import (
     "os"
     "strings"
-    "znskit/console"
+    "github.com/Zeronetsec/Znskit/console"
 )
 
 func main() {

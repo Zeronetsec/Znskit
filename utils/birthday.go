@@ -5,7 +5,7 @@ package utils
 import (
     "fmt"
     "time"
-    "znskit/utils/color"
+    "github.com/Zeronetsec/Znskit/utils/color"
 )
 
 func Birthday() {

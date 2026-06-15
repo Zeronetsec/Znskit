@@ -1,6 +1,6 @@
 // https://github.com/Zeronetsec/Znskit
 
-package core
+package module
 
 import (
     "fmt"
@@ -25,11 +25,11 @@ func Uwu(duration time.Duration) {
     for {
         select {
             case <-end:
-                fmt.Print("\033[K")
+                fmt.Print("\x1b[K")
                 return
             default:
                 fmt.Printf(
-                    "\r%s\033[K",
+                    "\r%s\x1b[K",
                     faces[kaomoji%len(faces)],
                 )
             time.Sleep(delay)

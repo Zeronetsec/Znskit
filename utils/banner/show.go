@@ -5,7 +5,7 @@ package banner
 import (
     "embed"
     "fmt"
-    "znskit/utils/color"
+    "github.com/Zeronetsec/Znskit/utils/color"
 )
 
 //go:embed ascii/*.txt

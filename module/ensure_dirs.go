@@ -1,12 +1,12 @@
 // https://github.com/Zeronetsec/Znskit
 
-package core
+package module
 
 import (
     "os"
     "fmt"
     "path/filepath"
-    "znskit/utils/color"
+    "github.com/Zeronetsec/Znskit/utils/color"
 )
 
 func EnsureDirs() error {
@@ -15,6 +15,7 @@ func EnsureDirs() error {
     dirs := []string{
         filepath.Join(prefix, "opt"),
         filepath.Join(prefix, "bin"),
+        filepath.Join(prefix, "tmp"),
     }
 
     for _, dir := range dirs {

@@ -1,12 +1,12 @@
 // https://github.com/Zeronetsec/Znskit
 
-package core
+package module
 
 import (
     "fmt"
     "os"
     "path/filepath"
-    "znskit/utils/color"
+    "github.com/Zeronetsec/Znskit/utils/color"
 )
 
 func Uninstall(pkg string) {
