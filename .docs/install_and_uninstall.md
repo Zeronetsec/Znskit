@@ -27,7 +27,6 @@ sudo ./install.sh
 export prefix="${PREFIX:-/usr}"
 rm -f "${prefix}/bin/znskit"
 rm -rf "${prefix}/opt/znskit"
-rm -rf ~/.config/znskit
 ```
 
 <!-- Copyright (c) 2026 Zeronetsec -->
