@@ -1,5 +1,4 @@
 bash
 golang
-coreutils
 zip
 git

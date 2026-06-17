@@ -19,6 +19,14 @@ func Install(pkg string) {
         return
     }
 
+    if !utils.CheckConnection() {
+        fmt.Printf(
+            "%s[!] %sNo internet connection!\n",
+            color.R, color.N,
+        )
+        return
+    }
+
     fmt.Printf(
         "%s[%s1%s/%s6%s] %sEnsuring directories...\n",
         color.DG, color.GG, color.DG, color.GG, color.DG, color.N,
@@ -49,14 +57,6 @@ func Install(pkg string) {
         "%s[%s3%s/%s6%s] %sChecking internet connection...\n",
         color.DG, color.GG, color.DG, color.GG, color.DG, color.N,
     )
-
-    if !utils.CheckConnection() {
-        fmt.Printf(
-            "%s[!] %sNo internet connection!\n",
-            color.R, color.N,
-        )
-        return
-    }
 
     fmt.Printf(
         "%s[%s4%s/%s6%s] %sValidating package...\n",
