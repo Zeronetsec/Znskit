@@ -29,7 +29,7 @@ chmod +x install.sh
 ```
 For more detailed installation and uninstallation instructions, see [.docs/install_and_uninstall.md](.docs/install_and_uninstall.md).
 
-## Usage
+## Usage Example
 ```bash
 znskit --search cli
 znskit --install woofind
