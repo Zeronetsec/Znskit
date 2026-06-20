@@ -30,7 +30,7 @@ function install::installer() {
             "Retidy: ${GG}znskit${N}"
 
         install::getinstall \
-            "command go build -v -o znskit" \
+            "command go build -o znskit" \
             "Building: ${GG}znskit${N}"
         cd
     )
