@@ -5,8 +5,8 @@ function install::installer() {
             install::getinstall \
                 "
                     command zip -r \
-                    znskit_${bkdate}.bak.zip \
-                    znskit
+                        znskit_${bkdate}.bak.zip \
+                        znskit
                 " \
                 "Backup: ${GG}${opt}/znskit ${DG}-> ${GG}${opt}/znskit_${bkdate}.bak.zip${N}"
             cd
@@ -38,8 +38,8 @@ function install::installer() {
     install::getinstall \
         "
             command ln -sf \
-            ${opt}/znskit/znskit \
-            ${bin}/znskit
+                ${opt}/znskit/znskit \
+                ${bin}/znskit
         " \
         "Symlink: ${GG}${opt}/znskit/znskit ${DG}-> ${GG}${bin}/znskit${N}"
 }
