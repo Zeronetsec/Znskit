@@ -1,5 +1,5 @@
 {
-	"Command": "--install",
-	"Args": "<tool>",
-	"Description": "install a new tool"
+    "Command": "--install",
+    "Args": "<tool>",
+    "Description": "install a new tool"
 }

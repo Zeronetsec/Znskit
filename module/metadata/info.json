@@ -1,5 +1,5 @@
 {
-	"Command": "--info",
-	"Args": "<tool>",
-	"Description": "display detailed information about a tool"
+    "Command": "--info",
+    "Args": "<tool>",
+    "Description": "display detailed information about a tool"
 }

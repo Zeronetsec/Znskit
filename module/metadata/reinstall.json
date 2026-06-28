@@ -1,5 +1,5 @@
 {
-	"Command": "--reinstall",
-	"Args": "<tool>",
-	"Description": "reinstall a tool"
+    "Command": "--reinstall",
+    "Args": "<tool>",
+    "Description": "reinstall a tool"
 }

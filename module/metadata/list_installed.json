@@ -1,5 +1,5 @@
 {
-	"Command": "--list-installed",
-	"Args": "",
-	"Description": "list installed tool"
+    "Command": "--list-installed",
+    "Args": "",
+    "Description": "list installed tool"
 }
