@@ -42,4 +42,4 @@ function install::installer() {
                 ${bin}/znskit
         " \
         "Symlink: ${GG}${opt}/znskit/znskit ${DG}-> ${GG}${bin}/znskit${N}"
-}
+}; readonly -f install::installer
