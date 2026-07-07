@@ -85,8 +85,8 @@ func Install(pkg string) {
     targetDir := repo.Name
     if _, err := os.Stat(targetDir); err == nil {
         fmt.Printf(
-            "%s[*] %sExisting folder found, removing...\n",
-            color.R, color.N,
+            "%s[-] %sExisting folder found, removing...\n",
+            color.YY, color.N,
         )
 
         if err := os.RemoveAll(targetDir); err != nil {
