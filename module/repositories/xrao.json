@@ -1,0 +1,5 @@
+{
+    "Name": "xrao",
+    "URL": "https://github.com/Zeronetsec/Xrao",
+    "Description": "Xrao is a declarative, indentation-based configuration DSL designed for structured Android system tweaking and automation via ADB."
+}
