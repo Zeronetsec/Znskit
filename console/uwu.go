@@ -10,9 +10,11 @@ import (
 
 type UWU struct{}
 func (c UWU) Execute(args []string) {
-    fmt.Print("\x1b[?25l")
+    fmt.Printf("\x1b[?25l")
     module.Uwu(5 * time.Second)
-    fmt.Print("\x1b[?25h")
+    fmt.Printf("\x1b[?25h")
+
+    fmt.Println()
 }
 
 // Copyright (c) 2026 Zeronetsec
