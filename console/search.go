@@ -4,7 +4,8 @@ package console
 
 import (
     "os"
-    "github.com/Zeronetsec/Znskit/module"
+    "strings"
+    "github.com/Zeronetsec/Znskit/module/search"
     "github.com/Zeronetsec/Znskit/utils/invinput"
 )
 
@@ -15,7 +16,8 @@ func (c Search) Execute(args []string) {
         os.Exit(1)
     }
 
-    module.Search(args[2])
+    keyword := strings.Join(args[2:], " ")
+    search.Searcher(keyword)
 }
 
 // Copyright (c) 2026 Zeronetsec

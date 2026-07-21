@@ -12,6 +12,7 @@ const (
     DG = "\x1b[1;90m"
     WW = "\x1b[0;37m"
     BB = "\x1b[0;34m"
+    PP = "\x1b[0;35m"
 )
 
 // Copyright (c) 2026 Zeronetsec

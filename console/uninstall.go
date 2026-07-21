@@ -4,7 +4,8 @@ package console
 
 import (
     "os"
-    "github.com/Zeronetsec/Znskit/module"
+    "strings"
+    "github.com/Zeronetsec/Znskit/module/uninstall"
     "github.com/Zeronetsec/Znskit/utils/invinput"
 )
 
@@ -15,7 +16,20 @@ func (c Uninstall) Execute(args []string) {
         os.Exit(1)
     }
 
-    module.Uninstall(args[2])
+    toolName := args[2]
+    var uFlags []string
+
+    for i := 3; i < len(args); i++ {
+        if args[i] == "--uflag" && i+1 < len(args) {
+            rawFlags := args[i+1]
+            if strings.TrimSpace(rawFlags) != "" {
+                uFlags = strings.Fields(rawFlags)
+            }
+            break
+        }
+    }
+
+    uninstall.Execute(toolName, uFlags)
 }
 
 // Copyright (c) 2026 Zeronetsec

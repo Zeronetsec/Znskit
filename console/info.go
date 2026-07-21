@@ -4,7 +4,7 @@ package console
 
 import (
     "os"
-    "github.com/Zeronetsec/Znskit/module"
+    "github.com/Zeronetsec/Znskit/module/info"
     "github.com/Zeronetsec/Znskit/utils/invinput"
 )
 
@@ -15,7 +15,8 @@ func (c Info) Execute(args []string) {
         os.Exit(1)
     }
 
-    module.Info(args[2])
+    toolName := args[2]
+    info.Show(toolName)
 }
 
 // Copyright (c) 2026 Zeronetsec

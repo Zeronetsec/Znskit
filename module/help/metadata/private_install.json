@@ -1,0 +1,5 @@
+{
+    "Command": "--private-install",
+    "Args": "<tool> <privdat> [--iflag <args...>]",
+    "Description": "install a new tool with private data"
+}

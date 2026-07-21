@@ -25,6 +25,8 @@ func ZnsConsole(input string) {
         "--list-installed": ListInstalled{},
         "--reinstall": Reinstall{},
         "--info": Info{},
+        "--private-install": PrivInstall{},
+        "--private-reinstall": PrivReinstall{},
     }
 
     if cmd, ok := commands[args[1]]; ok {

@@ -3,12 +3,12 @@
 package console
 
 import (
-    "github.com/Zeronetsec/Znskit/module"
+    "github.com/Zeronetsec/Znskit/module/help"
 )
 
 type Helper struct{}
 func (c Helper) Execute(args []string) {
-    module.Help()
+    help.Show()
 }
 
 // Copyright (c) 2026 Zeronetsec

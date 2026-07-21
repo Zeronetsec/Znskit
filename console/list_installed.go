@@ -3,12 +3,12 @@
 package console
 
 import (
-    "github.com/Zeronetsec/Znskit/module"
+    "github.com/Zeronetsec/Znskit/module/listins"
 )
 
 type ListInstalled struct{}
 func (c ListInstalled) Execute(args []string) {
-    module.ListInstalled()
+    listins.Show()
 }
 
 // Copyright (c) 2026 Zeronetsec

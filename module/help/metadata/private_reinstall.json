@@ -1,0 +1,5 @@
+{
+    "Command": "--private-reinstall",
+    "Args": "<tool> <privdat> [--iflag <args...>] [--uflag <args...>]",
+    "Description": "reinstall a tool with private data"
+}

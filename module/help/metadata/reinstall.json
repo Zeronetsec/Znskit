@@ -1,0 +1,5 @@
+{
+    "Command": "--reinstall",
+    "Args": "<tool> [--iflag <args...>] [--uflag <args...>]",
+    "Description": "reinstall a tool"
+}

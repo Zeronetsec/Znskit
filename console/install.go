@@ -4,7 +4,8 @@ package console
 
 import (
     "os"
-    "github.com/Zeronetsec/Znskit/module"
+    "strings"
+    "github.com/Zeronetsec/Znskit/module/install"
     "github.com/Zeronetsec/Znskit/utils/invinput"
 )
 
@@ -15,7 +16,20 @@ func (c Install) Execute(args []string) {
         os.Exit(1)
     }
 
-    module.Install(args[2])
+    toolName := args[2]
+    var iFlags []string
+
+    for i := 3; i < len(args); i++ {
+        if args[i] == "--iflag" && i+1 < len(args) {
+            rawFlags := args[i+1]
+            if strings.TrimSpace(rawFlags) != "" {
+                iFlags = strings.Fields(rawFlags)
+            }
+            break
+        }
+    }
+
+    install.Clone(toolName, iFlags)
 }
 
 // Copyright (c) 2026 Zeronetsec
