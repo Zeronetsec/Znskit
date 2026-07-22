@@ -3,6 +3,7 @@
 package info
 
 import (
+    "os"
     "fmt"
     "strings"
     "encoding/json"
