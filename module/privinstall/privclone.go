@@ -11,6 +11,7 @@ import (
     "path/filepath"
     "github.com/Zeronetsec/Znskit/utils"
     "github.com/Zeronetsec/Znskit/utils/color"
+    "github.com/Zeronetsec/Znskit/utils/validator"
 )
 
 func PrivClone(
@@ -18,13 +19,21 @@ func PrivClone(
     privDataDir string,
     iFlags []string,
 ) {
+    if validator.Installed(toolName) {
+        fmt.Printf(
+            "%s[!] %sTool: %s%s %sis already installed!\n",
+            color.R, color.N, color.GG, toolName, color.N,
+        )
+        os.Exit(1)
+    }
+
     privInfo, err := os.Stat(privDataDir)
     if err != nil || !privInfo.IsDir() {
         fmt.Printf(
             "%s[!] %sPrivate data folder: %s%s %snot found!\n",
             color.R, color.N, color.GG, privDataDir, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     if !utils.CheckConnection() {
@@ -32,7 +41,7 @@ func PrivClone(
             "%s[!] %sNo internet connection!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     repoURL := fmt.Sprintf(
@@ -58,7 +67,7 @@ func PrivClone(
             "%s[!] %sTool: %s%s %snot found!\n",
             color.R, color.N, color.GG, toolName, color.N,
         )
-        return
+        os.Exit(1)
     }
     resp.Body.Close()
 
@@ -87,7 +96,7 @@ func PrivClone(
             "%s[!] %sGit clone error!\n",
             color.R, color.N, toolName,
         )
-        return
+        os.Exit(1)
     }
 
     privFolderName := filepath.Base(
@@ -109,7 +118,7 @@ func PrivClone(
             "%s[!] %sFailed to copy privat data: %s%v%s\n",
             color.R, color.N, color.GG, err, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     installShPath := filepath.Join(tmpDir, "install.sh")
@@ -121,7 +130,7 @@ func PrivClone(
             color.R, color.N, color.GG, color.N,
             color.GG, toolName, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     _ = os.Chmod(installShPath, 0755)
@@ -142,7 +151,7 @@ func PrivClone(
             "%s[!] %sInstallation failed: %s%v%s\n",
             color.R, color.N, color.GG, err, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     _ = os.RemoveAll(tmpDir)

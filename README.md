@@ -34,10 +34,10 @@ For more detailed installation and uninstallation instructions, see [.docs/insta
 ## Usage Example
 ```bash
 znskit --search cli
-znskit --install woofind
-znskit --uninstall woofind
-znskit --list-installed
-znskit --info woofind
+znskit --install chprompt --iflag --backup
+znskit --uninstall chprompt --uflag --home=/home/zeronetsec
+znskit --list details
+znskit --info comet
 ```
 And more commands.
 

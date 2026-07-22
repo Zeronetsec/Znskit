@@ -17,7 +17,7 @@ func Show(toolName string) {
             "%s[!] %sNo internet connection!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     apiUrl := fmt.Sprintf(
@@ -31,7 +31,7 @@ func Show(toolName string) {
             "%s[!] %sFailed to create request: %s%v%s\n",
             color.R, color.N, color.GG, err, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     req.Header.Set(
@@ -46,7 +46,7 @@ func Show(toolName string) {
             "%s[!] %sFailed to connect to API!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
     defer resp.Body.Close()
 
@@ -55,13 +55,13 @@ func Show(toolName string) {
             "%s[!] %sTool: %s%s %snot found!\n",
             color.R, color.N, color.GG, toolName, color.N,
         )
-        return
+        os.Exit(1)
     } else if resp.StatusCode != http.StatusOK {
         fmt.Printf(
             "%s[!] %sGitHub API error: %s%s%s\n",
             color.R, color.N, color.GG, resp.Status, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     var repo RepoInfo
@@ -72,7 +72,7 @@ func Show(toolName string) {
             "%s[!] %sFailed to processing json data!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     language := "?"

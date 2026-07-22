@@ -16,7 +16,7 @@ func Show(isDetails bool) {
             "%s[!] %sNo internet connection!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     url := "https://api.github.com/users/Zeronetsec/repos"
@@ -26,7 +26,7 @@ func Show(isDetails bool) {
             "%s[!] %sFailed to create request: %s%v%s\n",
             color.R, color.N, color.GG, err, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     req.Header.Set(
@@ -41,7 +41,7 @@ func Show(isDetails bool) {
             "%s[!] %sFailed to connect to API!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
     defer resp.Body.Close()
 
@@ -50,7 +50,7 @@ func Show(isDetails bool) {
             "%s[!] %sGitHub API error: %s%s%s\n",
             color.R, color.N, color.GG, resp.Status, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     var repos []Repo
@@ -61,7 +61,7 @@ func Show(isDetails bool) {
             "%s[!] %sFailed to processing json data!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     for _, r := range repos {

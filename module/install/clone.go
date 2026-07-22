@@ -11,15 +11,24 @@ import (
     "net/http"
     "github.com/Zeronetsec/Znskit/utils"
     "github.com/Zeronetsec/Znskit/utils/color"
+    "github.com/Zeronetsec/Znskit/utils/validator"
 )
 
 func Clone(toolName string, iFlags []string) {
+    if validator.Installed(toolName) {
+        fmt.Printf(
+            "%s[!] %sTool: %s%s %sis already installed!\n",
+            color.R, color.N, color.GG, toolName, color.N,
+        )
+        os.Exit(1)
+    }
+
     if !utils.CheckConnection() {
         fmt.Printf(
             "%s[!] %sNo internet connection!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     apiUrl := fmt.Sprintf(
@@ -33,7 +42,7 @@ func Clone(toolName string, iFlags []string) {
             "%s[!] %sFailed to create request: %s%v%s\n",
             color.R, color.N, color.GG, err, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     req.Header.Set(
@@ -48,7 +57,7 @@ func Clone(toolName string, iFlags []string) {
             "%s[!] %sFailed to connect to API!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
     defer resp.Body.Close()
 
@@ -57,13 +66,13 @@ func Clone(toolName string, iFlags []string) {
             "%s[!] %sTool: %s%s %snot found!\n",
             color.R, color.N, color.GG, toolName, color.N,
         )
-        return
+        os.Exit(1)
     } else if resp.StatusCode != http.StatusOK {
         fmt.Printf(
             "%s[!] %sGitHub API error: %s%s%s\n",
             color.R, color.N, color.GG, resp.Status, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     var repo Repo
@@ -74,7 +83,7 @@ func Clone(toolName string, iFlags []string) {
             "%s[!] %sFailed to processing json data!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     prefix := utils.GetPrefix()
@@ -111,7 +120,7 @@ func Clone(toolName string, iFlags []string) {
             "%s[!] %sGit clone error!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     installShPath := filepath.Join(
@@ -124,7 +133,7 @@ func Clone(toolName string, iFlags []string) {
             color.R, color.N, color.GG, color.N,
             color.GG, targetDir, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     if err := os.Chmod(installShPath, 0755); err != nil {
@@ -133,7 +142,7 @@ func Clone(toolName string, iFlags []string) {
             color.R, color.N, color.GG, color.DG,
             color.CC, err, color.DG, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     fmt.Printf(
@@ -154,7 +163,7 @@ func Clone(toolName string, iFlags []string) {
             "%s[!] %sInstallation failed: %s%v%s\n",
             color.R, color.N, color.GG, err, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     _ = os.RemoveAll(targetDir)

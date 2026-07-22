@@ -18,7 +18,7 @@ func Show() {
             "%s[!] %sNo internet connection!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     url := "https://api.github.com/users/Zeronetsec/repos"
@@ -28,7 +28,7 @@ func Show() {
             "%s[!] %sFailed to create request: %s%v%s\n",
             color.R, color.N, color.GG, err, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     req.Header.Set(
@@ -43,7 +43,7 @@ func Show() {
             "%s[!] %sFailed to connect to API!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
     defer resp.Body.Close()
 
@@ -52,7 +52,7 @@ func Show() {
             "%s[!] %sGitHub API error: %s%s%s\n",
             color.R, color.N, color.GG, resp.Status, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     var repos []Repo
@@ -63,7 +63,7 @@ func Show() {
             "%s[!] %sFailed to processing json data!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     prefix := utils.GetPrefix()
@@ -138,7 +138,7 @@ func Show() {
             "%s[!] %sNo tools are installed!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
 }
 

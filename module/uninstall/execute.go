@@ -9,9 +9,18 @@ import (
     "path/filepath"
     "github.com/Zeronetsec/Znskit/utils"
     "github.com/Zeronetsec/Znskit/utils/color"
+    "github.com/Zeronetsec/Znskit/utils/validator"
 )
 
 func Execute(toolName string, uFlags []string) {
+    if validator.NotInstalled(toolName) {
+        fmt.Printf(
+            "%s[!] %sTool: %s%s %sis not installed!\n",
+            color.R, color.N, color.GG, toolName, color.N,
+        )
+        os.Exit(1)
+    }
+
     prefix := utils.GetPrefix()
     optDir := filepath.Join(prefix, "opt", toolName)
     uninstallShPath := filepath.Join(
@@ -28,7 +37,7 @@ func Execute(toolName string, uFlags []string) {
             "%s[!] %sEnsure the tool: %s%s %sis installed!\n",
             color.R, color.N, color.GG, toolName, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     _ = os.Chmod(uninstallShPath, 0755)
@@ -49,7 +58,7 @@ func Execute(toolName string, uFlags []string) {
             "%s[!] %sUninstallation failed: %s%v%s\n",
             color.R, color.N, color.GG, err, color.N,
         )
-        return
+        os.Exit(1)
     }
 }
 

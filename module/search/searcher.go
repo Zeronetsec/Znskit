@@ -18,7 +18,7 @@ func Searcher(keyword string) {
             "%s[!] %sNo internet connection!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     safeKeyword := url.QueryEscape(keyword)
@@ -33,7 +33,7 @@ func Searcher(keyword string) {
             "%s[!] %sFailed to create request: %s%v%s\n",
             color.R, color.N, color.GG, err, color.N,
         )
-        return
+        os.Exit(1)
     }
 
 
@@ -49,7 +49,7 @@ func Searcher(keyword string) {
             "%s[!] %sFailed to connect to API!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
     defer resp.Body.Close()
 
@@ -58,7 +58,7 @@ func Searcher(keyword string) {
             "%s[!] %sGitHub API error: %s%s%s\n",
             color.R, color.N, color.GG, resp.Status, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     var result SearchResponse
@@ -69,7 +69,7 @@ func Searcher(keyword string) {
             "%s[!] %sFailed to processing json data!\n",
             color.R, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     if len(result.Items) == 0 {
@@ -77,7 +77,7 @@ func Searcher(keyword string) {
             "%s[!] %sTool with keyword: %s%s %snot found!\n",
             color.R, color.N, color.GG, keyword, color.N,
         )
-        return
+        os.Exit(1)
     }
 
     for _, r := range result.Items {
