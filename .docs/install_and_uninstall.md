@@ -3,30 +3,23 @@
 # Installation
 `install.sh` optional option:
 - `--backup`
+- └── create a backup of the existing Znskit installation before replacing it.
 
-Use `--backup` to create a backup of the existing Znskit installation before replacing it.
-
-## Termux & Linux (root)
+### Usage
 ```bash
 git clone https://github.com/Zeronetsec/Znskit
-cd Znskit
-chmod +x install.sh
-./install.sh
+bash Znskit/install.sh <option>
 ```
 
-## Linux (user)
-```bash
-git clone https://github.com/Zeronetsec/Znskit
-cd Znskit
-chmod +x install.sh
-sudo ./install.sh
-```
+# Uninstallation
+`uninstall.sh` optional option:
+- `--remove-backup`
+- └── remove all backup found.
 
-## Uninstallation
+### Usage
 ```bash
 export prefix="${PREFIX:-/usr}"
-rm -f "${prefix}/bin/znskit"
-rm -rf "${prefix}/opt/znskit"
+bash $prefix/opt/znskit/uninstall.sh <option>
 ```
 
 <!-- Copyright (c) 2026 Zeronetsec -->
