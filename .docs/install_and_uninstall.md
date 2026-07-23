@@ -12,9 +12,11 @@ bash Znskit/install.sh <option>
 ```
 
 # Uninstallation
-`uninstall.sh` optional option:
+`uninstall.sh` optional options (can be used together):
 - `--remove-backup`
 - └── remove all backup found.
+- `--no-remove-config`
+- └── do not remove `~/.znskit`.
 
 ### Usage
 ```bash

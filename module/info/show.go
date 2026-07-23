@@ -150,8 +150,6 @@ func Show(toolName string) {
         "%s└── %s%s%s\n",
         color.DG, color.WW, description, color.N,
     )
-
-    fmt.Println()
 }
 
 // Copyright (c) 2026 Zeronetsec

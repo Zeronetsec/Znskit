@@ -23,6 +23,22 @@ function install::installer() {
         "command mv ${root} ${opt}/znskit" \
         "Moving: ${GG}${root} ${DG}-> ${GG}${opt}/znskit${N}"
 
+    if [[ ! -d "${HOME}/.znskit" ]]; then
+        install::getinstall \
+            "command mkdir -p ${HOME}/.znskit" \
+            "Create directory: ${GG}${HOME}/.znskit${N}"
+    fi
+
+    if [[ ! -f "${HOME}/.znskit/packages.lst" ]]; then
+        install::getinstall \
+            "
+                command cat \
+                    ${opt}/znskit/config/packages.lst \
+                    > ${HOME}/.znskit/packages.lst
+            " \
+            "Create file: ${GG}${HOME}/.znskit/packages.lst${N}"
+    fi
+
     (
         cd "${opt}/znskit"
         install::getinstall \

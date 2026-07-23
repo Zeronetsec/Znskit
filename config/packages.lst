@@ -1,0 +1,7 @@
+.install/packages.txt
+.install/extern/packages.txt
+.install/extern/android_packages.txt
+.install/extern/termux_packages.txt
+.install/extern/python_packages.txt
+.install/extern/perl_packages.txt
+.install/extern/ruby_packages.txt

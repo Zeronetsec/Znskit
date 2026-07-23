@@ -3,37 +3,54 @@
 package info
 
 import (
-    "fmt"
     "bufio"
-    "strings"
+    "fmt"
     "net/http"
+    "strings"
 )
 
 func fetchDependencies(toolName, branch string) string {
-    url := fmt.Sprintf(
-        "https://raw.githubusercontent.com/Zeronetsec/%s/%s/.install/packages.txt",
-        toolName, branch,
-    )
+    paths := getPackagePaths()
+    uniqueDeps := make(map[string]bool)
+    var depsList []string
 
-    resp, err := http.Get(url)
-    if err != nil || resp.StatusCode != http.StatusOK {
-        return "?"
-    }
-    defer resp.Body.Close()
+    for _, path := range paths {
+        cleanPath := strings.TrimPrefix(path, "/")
+        url := fmt.Sprintf(
+            "https://raw.githubusercontent.com/Zeronetsec/%s/%s/%s",
+            toolName, branch, cleanPath,
+        )
 
-    var deps []string
-    scanner := bufio.NewScanner(resp.Body)
-    for scanner.Scan() {
-        line := strings.TrimSpace(scanner.Text())
-        if line != "" && !strings.HasPrefix(line, "#") {
-            deps = append(deps, line)
+        resp, err := http.Get(url)
+        if err != nil {
+            continue
         }
+
+        if resp.StatusCode != http.StatusOK {
+            resp.Body.Close()
+            continue
+        }
+
+        scanner := bufio.NewScanner(resp.Body)
+        for scanner.Scan() {
+            line := strings.TrimSpace(scanner.Text())
+            if line != "" && !strings.HasPrefix(
+                line, "#",
+            ) {
+                if !uniqueDeps[line] {
+                    uniqueDeps[line] = true
+                    depsList = append(depsList, line)
+                }
+            }
+        }
+        resp.Body.Close()
     }
 
-    if len(deps) == 0 {
+    if len(depsList) == 0 {
         return "?"
     }
-    return strings.Join(deps, ", ")
+
+    return strings.Join(depsList, ", ")
 }
 
 // Copyright (c) 2026 Zeronetsec
