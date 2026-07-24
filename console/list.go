@@ -9,7 +9,7 @@ import (
 type Lister struct{}
 func (c Lister) Execute(args []string) {
     isDetails := false
-    if len(args) > 2 && args[2] == "details" {
+    if len(args) > 2 && args[2] == "--details" {
         isDetails = true
     }
 

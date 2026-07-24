@@ -1,5 +1,5 @@
 {
     "Command": "--list",
-    "Args": "[details]",
+    "Args": "[--details]",
     "Description": "list all available tools"
 }
