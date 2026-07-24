@@ -47,7 +47,7 @@ function install::installer() {
 
         install::getinstall \
             "command go build -o znskit" \
-            "Building: ${GG}znskit${N}"
+            "Compiling: ${GG}znskit${N}"
         cd
     )
 
