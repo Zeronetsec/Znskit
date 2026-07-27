@@ -11,7 +11,7 @@ import (
 func Birthday() {
     bdate := "05-20"
     now := time.Now().Format("01-02")
-    tname := "znskit"
+    tname := "Znskit"
 
     if now == bdate {
         fmt.Printf(
