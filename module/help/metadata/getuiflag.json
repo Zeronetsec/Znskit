@@ -1,0 +1,5 @@
+{
+    "Command": "--getuiflag",
+    "Args": "<tool>",
+    "Description": "show iflag and uflag available options"
+}
