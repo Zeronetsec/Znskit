@@ -77,7 +77,7 @@ func Fetch(toolName string) {
     }
 
     rawUrl := fmt.Sprintf(
-        "https://raw.githubusercontent.com/Zeronetsec/%s/%s/.gitaction/uiflag_params.flg",
+        "https://raw.githubusercontent.com/Zeronetsec/%s/%s/.laction/output/uiflag_params.flg",
         repo.Name, repo.DefaultBranch,
     )
 
@@ -99,7 +99,7 @@ func Fetch(toolName string) {
 
     if flgResp.StatusCode == http.StatusNotFound {
         fmt.Printf(
-            "%s[!] %sFile: %s.gitaction/uiflag_params.flg %snot found in tool %s%s%s\n",
+            "%s[!] %sFile: %s.laction/output/uiflag_params.flg %snot found in tool %s%s%s\n",
             color.R, color.N, color.GG, color.N, color.GG, toolName, color.N,
         )
         os.Exit(1)
