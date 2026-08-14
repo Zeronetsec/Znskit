@@ -36,7 +36,7 @@ For more detailed installation and uninstallation instructions, see [.docs/insta
 znskit --search cli
 znskit --install chprompt --iflag --backup
 znskit --uninstall chprompt --uflag --home=/home/zeronetsec
-znskit --list details
+znskit --list --details
 znskit --info comet
 ```
 And more commands.
